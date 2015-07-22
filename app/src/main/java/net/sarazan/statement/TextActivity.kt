@@ -18,6 +18,8 @@ public class TextActivity : AppCompatActivity() {
 
     private val content: View by bindView(R.id.content)
     private val editText: EditText by bindView(android.R.id.edit)
+    private val done: View by bindView(R.id.done)
+
     private var layout = false
 
     private var index: Int? = null
@@ -42,16 +44,25 @@ public class TextActivity : AppCompatActivity() {
         editText.setOnKeyListener(object: View.OnKeyListener {
             override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    val intent = Intent()
-                    intent.putExtra("index", index!!)
-                    if (editText.getText().toString().isNotEmpty()) {
-                        intent.putExtra("item", Item(editText.getText().toString()))
-                    }
-                    setResult(Activity.RESULT_OK, intent)
+                    done()
                     return true;
                 }
                 return false;
             }
         })
+
+        done.setOnClickListener {
+            done()
+        }
+    }
+
+    private fun done() {
+        val intent = Intent()
+        intent.putExtra("index", index!!)
+        if (editText.getText().toString().isNotEmpty()) {
+            intent.putExtra("item", Item(editText.getText().toString()))
+        }
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 }

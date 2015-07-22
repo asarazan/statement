@@ -29,4 +29,16 @@
         android:textColorHint="@color/text_light"
         android:hint="Begin typing or tap to edit"/>
 
+    <TextView
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:textSize="@dimen/text_large"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/margin_large"
+        android:clickable="true"/>
+
 </RelativeLayout>

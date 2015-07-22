@@ -1,5 +1,6 @@
 package net.sarazan.statement
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -11,8 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import butterknife.bindView
-import com.levelmoney.velodrome.Velodrome
-import com.levelmoney.velodrome.annotations.OnActivityResult
 
 /**
  * Created by Aaron Sarazan on 7/21/15
@@ -59,21 +58,18 @@ public class MainActivity() : AppCompatActivity() {
         overridePendingTransition(0, 0)
     }
 
-    OnActivityResult(0)
-    public fun onResult(data: Intent) {
-        val item = data.getSerializableExtra("item") as Item?
-        val index = data.getIntExtra("index", -1)
-        when {
-            item == null -> items.remove(index)
-            index == items.size() -> items.add(item)
-            else -> items[index] = item
-        }
-        recycler.getAdapter().notifyDataSetChanged()
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Velodrome.handleResult(this, requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            val item = data!!.getSerializableExtra("item") as Item?
+            val index = data.getIntExtra("index", -1)
+            when {
+                item == null            -> items.remove(index)
+                index == items.size()   -> items.add(item)
+                else                    -> items[index] = item
+            }
+            recycler.getAdapter().notifyDataSetChanged()
+        }
     }
 
     private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
