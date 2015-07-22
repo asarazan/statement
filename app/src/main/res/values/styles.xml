@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textViewStyle">@style/TextViewStandard</item>
+        <item name="colorAccent">@color/app_green</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="AppTheme.FullScreen">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="TextViewStandard" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+</resources>

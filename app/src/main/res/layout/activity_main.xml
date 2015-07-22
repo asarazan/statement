@@ -1,0 +1,26 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:elevation="@dimen/elevation_normal"
+        app:pressedTranslationZ="@dimen/elevation_high"
+        android:layout_margin="@dimen/margin_large"
+        android:src="@mipmap/ic_add_black"
+        android:layout_gravity="bottom|right"
+        app:layout_behavior="net.sarazan.statement.ScrollAwareFABBehavior"/>
+
+</android.support.design.widget.CoordinatorLayout>

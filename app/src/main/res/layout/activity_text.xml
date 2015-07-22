@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:visibility="visible">
+
+    <View
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:background="?colorAccent"/>
+
+    <EditText
+        android:id="@android:id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="@null"
+        android:textSize="@dimen/text_statement"
+        android:textColor="@color/text_normal"
+        android:gravity="top|left"
+        android:layout_margin="@dimen/margin_large"
+        android:singleLine="false"
+        android:textColorHint="@color/text_light"
+        android:hint="Begin typing or tap to edit"/>
+
+</RelativeLayout>
