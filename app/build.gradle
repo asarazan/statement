@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "net.sarazan.statement"
-        minSdkVersion 10
+        minSdkVersion 14
         targetSdkVersion project.sdk_version
         versionCode 1
         versionName "1.0"
@@ -24,6 +24,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile 'com.levelmoney.velodrome:velodrome:1.0'
 
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support:recyclerview-v7:$support_version"
