@@ -12,6 +12,7 @@ android {
         targetSdkVersion project.sdk_version
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -32,4 +33,7 @@ dependencies {
     compile "com.android.support:design:$support_version"
 
     compile 'io.realm:realm-android:0.81.1'
+
+    androidTestCompile 'com.android.support.test:runner:0.3'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
 }
