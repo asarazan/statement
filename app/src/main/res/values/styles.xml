@@ -5,13 +5,14 @@
         <item name="android:textViewStyle">@style/TextViewStandard</item>
         <item name="colorAccent">@color/app_green</item>
         <item name="android:windowBackground">@color/background</item>
-    </style>
-
-    <style name="AppTheme.FullScreen">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.Detail">
+        <item name="colorAccent">@color/app_pink</item>
     </style>
 
     <style name="TextViewStandard" parent="android:Widget.TextView">

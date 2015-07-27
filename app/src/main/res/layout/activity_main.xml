@@ -21,6 +21,6 @@
         android:layout_margin="@dimen/margin_large"
         android:src="@mipmap/ic_add_black"
         android:layout_gravity="bottom|right"
-        app:layout_behavior="net.sarazan.statement.ScrollAwareFABBehavior"/>
+        app:layout_behavior="net.sarazan.statement.ScrollingFABBehavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

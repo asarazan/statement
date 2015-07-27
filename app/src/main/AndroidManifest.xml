@@ -11,8 +11,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.FullScreen">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,8 +20,8 @@
 
         <activity
             android:name=".TextActivity"
-            android:theme="@style/AppTheme.FullScreen"
-            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"/>
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+            android:theme="@style/AppTheme.Detail"/>
 
     </application>
 

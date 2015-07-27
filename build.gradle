@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    apply from: 'https://raw.githubusercontent.com/Levelmoney/JCenter/master/buildscriptv1.gradle'
+    apply from: 'buildscriptv1.gradle'
     repositories {
         jcenter()
     }

@@ -2,43 +2,50 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:visibility="visible">
 
-    <View
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        tools:visibility="visible"
-        android:background="?colorAccent"/>
-
-    <EditText
+    <net.sarazan.statement.AutoResizeEditText
         android:id="@android:id/edit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
         android:background="@null"
         android:textSize="@dimen/text_statement"
-        android:textColor="@color/text_normal"
+        android:textColor="@color/white"
         android:gravity="top|left"
         android:layout_margin="@dimen/margin_large"
+        android:imeOptions="actionDone"
+        android:focusable="true"
         android:singleLine="false"
-        android:textColorHint="@color/text_light"
-        android:hint="Begin typing or tap to edit"/>
+        android:textColorHint="@color/white_alpha"
+        android:hint="Begin typing or tap to edit">
+        <requestFocus/>
+    </net.sarazan.statement.AutoResizeEditText>
 
-    <TextView
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Done"
-        android:textSize="@dimen/text_large"
-        android:gravity="center"
+        android:layout_margin="@dimen/margin_large"
+        android:src="@mipmap/ic_done_black"
+        app:elevation="@dimen/elevation_normal"
+        app:pressedTranslationZ="@dimen/elevation_high"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:padding="@dimen/margin_large"
-        android:clickable="true"/>
+        app:backgroundTint="@color/app_green"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_large"
+        android:src="@mipmap/ic_delete_black"
+        app:elevation="@dimen/elevation_normal"
+        app:pressedTranslationZ="@dimen/elevation_high"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/done"
+        app:backgroundTint="@color/app_pink"/>
 
 </RelativeLayout>

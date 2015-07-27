@@ -8,7 +8,11 @@
     <color name="background">#261C27</color>
     <color name="app_green">#50E47B</color>
     <color name="app_green_alpha">#4050E47B</color>
+    <color name="app_pink">#e4006a</color>
     <color name="white">#FFF</color>
     <color name="white_alpha">#4FFF</color>
+
+    <color name="darken">#10000000</color>
+    <color name="lighten">#1fffffff</color>
 
 </resources>

@@ -3,15 +3,15 @@ package net.sarazan.statement
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import butterknife.bindView
+import io.realm.Realm
+import net.sarazan.statement.data.Item
+import kotlin.properties
 
 /**
  * Created by Aaron Sarazan on 7/21/15
@@ -22,58 +22,43 @@ public class MainActivity() : AppCompatActivity() {
     private val fab: FloatingActionButton by bindView(R.id.fab)
     private val recycler: RecyclerView by bindView(R.id.recycler)
 
-    private val items: MutableList<Item> = arrayListOf(Item("Testing"), Item("Sup."))
+    private val adapter: StatementAdapter?
+        get() = recycler.getAdapter() as StatementAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         fab.setOnClickListener {
-            show(items.size(), Item(null))
+            show(null)
         }
 
         recycler.setLayoutManager(LinearLayoutManager(this))
-        recycler.setAdapter(object: RecyclerView.Adapter<ViewHolder>() {
-            override fun getItemCount(): Int = items.size()
-
-            override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-                val item = items[p1]
-                p0.text.setText(item.text)
-                p0.itemView.setOnClickListener {
-                    show(p1, item)
-                }
-            }
-
-            override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder? {
-                return ViewHolder(LayoutInflater.from(p0.getContext()).inflate(R.layout.item_statement, p0, false))
-            }
-        })
+        val realm = Realm.getInstance(this)
+        val results = realm.allObjects(javaClass<Item>())
+        results.sort("id")
+        recycler.setAdapter(StatementAdapter(this, results))
     }
 
-    private fun show(index: Int, item: Item) {
-        val i = Intent(this, javaClass<TextActivity>())
-        i.putExtra("index", index)
-        i.putExtra("item", item)
-        startActivityForResult(i, 0)
-        overridePendingTransition(0, 0)
+    private fun show(item: Item?) {
+        val intent = TextActivity.get(this, item?.getId(), item?.getText())
+        startActivityForResult(intent, 0)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            val item = data!!.getSerializableExtra("item") as Item?
-            val index = data.getIntExtra("index", -1)
+            val realm = adapter!!.getRealm()
+            val id = TextActivity.getIdExtra(data!!)
+            val text = TextActivity.getTextExtra(data)
+            realm.beginTransaction()
             when {
-                item == null            -> items.remove(index)
-                index == items.size()   -> items.add(item)
-                else                    -> items[index] = item
+                id == null      -> realm.copyToRealm(Item.create(text))
+                text == null    -> Item.withId(realm, id)?.removeFromRealm()
+                else            -> Item.withId(realm, id)?.setText(text)
             }
+            realm.commitTransaction()
             recycler.getAdapter().notifyDataSetChanged()
         }
     }
-
-    private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        public val text: TextView by bindView(android.R.id.text1)
-    }
-
 }
