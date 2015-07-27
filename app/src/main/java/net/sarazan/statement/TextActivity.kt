@@ -43,6 +43,7 @@ public class TextActivity : AppCompatActivity() {
 
     private val editText: EditText by bindView(android.R.id.edit)
 
+    private var start: String? = null
     private val delete: View by bindView(R.id.delete)
     private val done: View by bindView(R.id.done)
 
@@ -50,7 +51,8 @@ public class TextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text)
 
-        editText.setText(getIntent().getStringExtra("text"))
+        start = getIntent().getStringExtra("text")
+        editText.setText(start)
         editText.setSelection(editText.length())
         editText.setOnEditorActionListener { textView, i, keyEvent ->
             if (i == EditorInfo.IME_ACTION_DONE) {
@@ -60,11 +62,20 @@ public class TextActivity : AppCompatActivity() {
             }
             true
         }
+        editText.setOnKeyListener { view, i, keyEvent ->
+            updateVisibility()
+            false
+        }
 
-        delete.setVisibility(if(getIntent().hasExtra("id")) View.VISIBLE else View.GONE)
+        delete.setVisibility(if (getIntent().hasExtra("id")) View.VISIBLE else View.GONE)
 
         done.setOnClickListener { done() }
         delete.setOnClickListener { delete() }
+        updateVisibility()
+    }
+
+    private fun updateVisibility() {
+        done.setVisibility(if (start?.equals(editText.getText().toString())?:false) View.GONE else View.VISIBLE)
     }
 
     private fun delete() {
