@@ -8,10 +8,6 @@ import io.realm.RealmResults
 import net.sarazan.statement.data.Item
 import net.sarazan.statement.data.ItemViewHolder
 
-/**
- * Created by Aaron Sarazan on 7/23/15
- * Copyright(c) 2015 Level, Inc.
- */
 public class StatementAdapter(val activity: Activity, results: RealmResults<Item>) : RealmRecyclerViewAdapter<Item, ItemViewHolder>(activity, results, true) {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {

@@ -3,10 +3,6 @@ package net.sarazan.statement
 import android.content.Context
 import android.widget.Toast
 
-/**
- * Created by Aaron Sarazan on 7/21/15
- * Copyright(c) 2015 Level, Inc.
- */
 public object Toasts {
 
     public fun show(c: Context, string: Int) {

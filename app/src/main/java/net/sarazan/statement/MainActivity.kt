@@ -13,10 +13,6 @@ import io.realm.Realm
 import net.sarazan.statement.data.Item
 import kotlin.properties
 
-/**
- * Created by Aaron Sarazan on 7/21/15
- * Copyright(c) 2015 Level, Inc.
- */
 public class MainActivity() : AppCompatActivity() {
 
     private val fab: FloatingActionButton by bindView(R.id.fab)

@@ -13,10 +13,6 @@ import android.widget.EditText
 import butterknife.bindView
 import net.sarazan.statement.data.Item
 
-/**
- * Created by Aaron Sarazan on 7/22/15
- * Copyright(c) 2015
- */
 public class TextActivity : AppCompatActivity() {
 
     companion object {

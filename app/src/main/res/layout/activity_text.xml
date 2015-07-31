@@ -8,12 +8,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:visibility="visible">
 
-    <net.sarazan.statement.AutoResizeEditText
+    <net.sarazan.statement.FontFitEditText
         android:id="@android:id/edit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"
-        android:textSize="@dimen/text_statement"
+        android:textSize="72sp"
         android:textColor="@color/white"
         android:gravity="top|left"
         android:layout_margin="@dimen/margin_large"
@@ -21,9 +21,7 @@
         android:focusable="true"
         android:singleLine="false"
         android:textColorHint="@color/white_alpha"
-        android:hint="Begin typing or tap to edit">
-        <requestFocus/>
-    </net.sarazan.statement.AutoResizeEditText>
+        android:hint="Begin typing or tap to edit"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/done"

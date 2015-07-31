@@ -12,10 +12,6 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 
-/**
- * Created by Tre Murillo on 7/20/15
- * Copyright(c) 2015 Level, Inc.
- */
 public class ScrollingFABBehavior(context: Context, attrs: AttributeSet) : FloatingActionButton.Behavior() {
     private var isAnimatingOut = false
 
